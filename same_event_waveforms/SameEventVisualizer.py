@@ -17,7 +17,7 @@ def draw(lh5_file: str, channel_map: str, entries: list[int] = [0], channel_mask
     plt.rcParams["figure.facecolor"] = "white"
     plt.rcParams["font.size"] = 12
     
-    color=plt.cm.rainbow(np.linspace(0,1,33))
+    color=plt.cm.rainbow(np.linspace(0,1,len(c_map)))
     
     browsers= {int(re.findall('\d{3}', ch)[0]):WaveformBrowser(lh5_file, ch+'/raw', styles=[{'ls':['--'], 'c':[color[i-23]]}]) for i,ch in enumerate(c_map.keys())}
     to_be_drawn=list(set(browsers.keys())-set(channel_mask))
